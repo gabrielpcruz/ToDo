@@ -8,5 +8,18 @@ export const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         backgroundColor: '#1A1A1A',
+        marginTop: 50
     },
-});
+    image: {
+        marginBottom: 20
+    },
+    textoPrincipal: {
+        color: '#808080',
+        fontWeight: "900"
+    },
+    textoSecundario: {
+        color: '#808080',
+        fontWeight: "300"
+
+    }
+})

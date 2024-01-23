@@ -1,4 +1,4 @@
-import { View, TextInput, Text, Image, TouchableOpacity } from "react-native"
+import { View, TextInput, Image, TouchableOpacity } from "react-native"
 
 import { styles } from "./styles"
 
@@ -8,12 +8,15 @@ export function Input() {
         <View style={styles.container}>
             <TextInput 
                 style={styles.input}
+                cursorColor="#808080"
             />
 
-            <TouchableOpacity>
+            <TouchableOpacity
+                style={styles.button}
+            >
                 <Image
-            
-                    source="./../../../assets/img/plus.png"
+                    style={styles.imageButton}
+                    source={require("./../../../assets/img/plus.png")}
                 />
             </TouchableOpacity>
         </View>
