@@ -9,6 +9,8 @@ export function Input() {
             <TextInput 
                 style={styles.input}
                 cursorColor="#808080"
+                placeholder="Adicione uma nova tarefa"
+                placeholderTextColor="#808080"
             />
 
             <TouchableOpacity

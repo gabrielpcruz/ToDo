@@ -2,13 +2,13 @@ import { View } from "react-native"
 
 import { styles } from "./styles"
 
-import { ContadorTarefa } from "../ContadorTarefa"
+import { Contador } from "../Contador"
 
 export function Painel() {
     return (
         <View style={styles.container}>
-            <ContadorTarefa name="Criadas" />
-            <ContadorTarefa name="Concluídas" />
+            <Contador name="Criadas" color="#4EA8DE" />
+            <Contador name="Concluídas" color="#8284FA" />
         </View>
     )
 }

@@ -1,17 +1,18 @@
-import { View, Text } from "react-native"
+import { View, Text, StyleSheet } from "react-native"
 
 import { styles } from "./styles"
-import { Fragment } from "react"
 
+type Props = {
+    name: string,
+    color: string
+}
 
-export function Contador() {
+export function Contador({ name, color }: Props) {
+
     return (
         <View style={styles.container}>
-
-            <Fragment>
-                <Text style={styles.contador}>Criadas</Text>
-                <Text style={styles.contador}>Concluídas</Text>
-            </Fragment>
+            <Text style={[styles.label, { color: `${color}` }]} >{name}</Text>
+            <Text style={styles.contador}>0</Text>
         </View>
     )
 }

@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
     button: {
         flex: 1,
         height:'100%',
-        padding: 15,
+        padding: 12,
         justifyContent: 'center',
         alignItems: 'center',
         marginLeft: 10,
@@ -30,6 +30,7 @@ export const styles = StyleSheet.create({
         backgroundColor: '#262626',
         borderRadius: 5,
         paddingLeft: 20,
-        color: '#808080'
+        color: '#808080',
+        fontSize: 16
     }
 });

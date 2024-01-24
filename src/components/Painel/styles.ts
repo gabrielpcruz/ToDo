@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
     container: {
         width: '90%',
         height: 60,
-        borderBottomColor: 'white',
+        borderBottomColor: '#333333',
         borderBottomWidth: .7,
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -21,6 +21,5 @@ export const styles = StyleSheet.create({
         backgroundColor: '#262626',
         height: 60,
         borderRadius: 5
-
     },
 });

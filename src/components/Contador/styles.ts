@@ -3,18 +3,21 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
     container: {
-        width: '90%',
+        flex: 1,
         flexDirection: 'row',
-        color: 'white',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        backgroundColor: 'red'
+    },
+    label: {
+       color: 'white',
+       padding: 4,
+       fontSize: 15,
+       fontWeight: '900'
     },
     contador: {
-        width: 100,
-        height: 60,
+        width: 25,
+        height: 25,
+        backgroundColor: '#262626',
         padding: 5,
-        fontSize: 15,
-        backgroundColor: 'blue'
+        color: 'white',
+        borderRadius: 10
     }
 });
