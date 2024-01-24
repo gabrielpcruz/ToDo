@@ -9,12 +9,22 @@ import { ListaVazia } from "../ListaVazia";
 export function Body() {
     const [tarefas, setTarefas] = useState<string[]>([]);
 
+    function taferasConcluidas () {
+        return 5;
+    }
+
     return (
         <View style={styles.container}>
-            <Painel/>
+            <Painel
+                criadas={tarefas.length}
+                concluidas={taferasConcluidas()}
+            />
+
             <FlatList
                 data={tarefas}
+                
                 keyExtractor={item => item}
+
                 renderItem={({ item }) => (
                     <Text>s</Text>
                 )}

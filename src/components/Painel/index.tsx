@@ -4,11 +4,27 @@ import { styles } from "./styles"
 
 import { Contador } from "../Contador"
 
-export function Painel() {
+type Props = {
+    criadas: number,
+    concluidas: number,
+}
+
+export function Painel({ criadas, concluidas }: Props) {
     return (
         <View style={styles.container}>
-            <Contador name="Criadas" color="#4EA8DE" />
-            <Contador name="Concluídas" color="#8284FA" />
+            <Contador
+                name="Criadas"
+                quantidade={criadas}
+                color="#4EA8DE" 
+                position="left"
+            />
+
+            <Contador
+                name="Concluídas"
+                quantidade={concluidas}
+                position="right"
+                color="#8284FA"
+            />
         </View>
     )
 }

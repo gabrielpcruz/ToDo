@@ -5,6 +5,7 @@ export const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'row',
+        alignItems: 'center',
     },
     label: {
        color: 'white',
@@ -13,11 +14,26 @@ export const styles = StyleSheet.create({
        fontWeight: '900'
     },
     contador: {
-        width: 25,
-        height: 25,
+        flex: 1,
+        paddingLeft:10,
+        paddingRight:10,
+        justifyContent: 'center',
+        alignItems: 'center',
         backgroundColor: '#262626',
-        padding: 5,
+        padding: 1,
         color: 'white',
-        borderRadius: 10
+        borderRadius: 10,
+        marginLeft: 6,
+        fontWeight: '500'
+    },
+    left: {
+        position: 'absolute',
+
+        left: 0
+    },
+    right: {
+        position: 'absolute',
+
+        right: 0
     }
 });

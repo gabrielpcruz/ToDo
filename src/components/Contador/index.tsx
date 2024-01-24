@@ -4,15 +4,21 @@ import { styles } from "./styles"
 
 type Props = {
     name: string,
-    color: string
+    color: string,
+    position: string,
+    quantidade: number
 }
 
-export function Contador({ name, color }: Props) {
+export function Contador({ name, color, quantidade, position }: Props) {
+
+    const { left, right } = styles;
+    
+    const colors = (position === 'left' ? left : right);
 
     return (
-        <View style={styles.container}>
-            <Text style={[styles.label, { color: `${color}` }]} >{name}</Text>
-            <Text style={styles.contador}>0</Text>
+        <View style={[styles.container, colors]}>
+            <Text style={[styles.label, { color: `${color}`}]} >{name}</Text>
+            <Text style={styles.contador}>{quantidade ?? 0}</Text>
         </View>
     )
 }
