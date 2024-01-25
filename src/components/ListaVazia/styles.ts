@@ -8,7 +8,9 @@ export const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         backgroundColor: '#1A1A1A',
-        marginTop: 50
+        marginTop: 50,
+        borderTopColor: '#333333',
+        borderTopWidth: .7,
     },
     image: {
         marginBottom: 20

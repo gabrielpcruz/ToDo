@@ -5,6 +5,7 @@ import { styles } from "./styles"
 
 import { Painel } from "../Painel"
 import { ListaVazia } from "../ListaVazia";
+import { Tarefa } from "../Tarefa";
 
 export function Body() {
     const [tarefas, setTarefas] = useState<string[]>([]);
@@ -26,7 +27,7 @@ export function Body() {
                 keyExtractor={item => item}
 
                 renderItem={({ item }) => (
-                    <Text>s</Text>
+                    <Tarefa />
                 )}
 
                 ListEmptyComponent={() => (
