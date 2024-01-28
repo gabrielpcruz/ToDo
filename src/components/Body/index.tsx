@@ -8,7 +8,7 @@ import { ListaVazia } from "../ListaVazia";
 import { Tarefa } from "../Tarefa";
 
 export function Body() {
-    const [tarefas, setTarefas] = useState<string[]>([]);
+    const [tarefas, setTarefas] = useState<string[]>(['sd']);
 
     function taferasConcluidas () {
         return 5;
@@ -22,6 +22,7 @@ export function Body() {
             />
 
             <FlatList
+                style={styles.list}
                 data={tarefas}
                 
                 keyExtractor={item => item}

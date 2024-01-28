@@ -9,4 +9,7 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#1A1A1A',
     },
+    list: {
+        width: '90%',
+    }
 });
