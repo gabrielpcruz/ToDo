@@ -1,40 +1,21 @@
-import { View, Text, FlatList } from "react-native"
-import { useState } from "react";
+import { View, FlatList } from "react-native"
 
 import { styles } from "./styles"
 
 import { Painel } from "../Painel"
 import { ListaVazia } from "../ListaVazia";
-import { Tarefa } from "../Tarefa";
+import { Task } from "../Task";
 
-export function Body() {
-    const [tarefas, setTarefas] = useState<string[]>(['sd']);
+type Props = {
+    tasks: string[],
+    setTasks: () => void;
+}
 
-    function taferasConcluidas () {
-        return 5;
-    }
+export function Body({ tasks, setTasks } : Props) {
+
+
 
     return (
-        <View style={styles.container}>
-            <Painel
-                criadas={tarefas.length}
-                concluidas={taferasConcluidas()}
-            />
-
-            <FlatList
-                style={styles.list}
-                data={tarefas}
-                
-                keyExtractor={item => item}
-
-                renderItem={({ item }) => (
-                    <Tarefa />
-                )}
-
-                ListEmptyComponent={() => (
-                    <ListaVazia/>
-                )}
-            />
-        </View>
+        
     )
 }
