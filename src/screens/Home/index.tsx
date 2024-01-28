@@ -1,35 +1,43 @@
 import { View, FlatList } from "react-native"
 import { useState } from "react";
+import { TaskInterface, Task } from "../../classes/Task";
 
 import { styles } from "./styles"
 
 import { Head } from "../../components/Head"
 import { Input } from "../../components/Input"
 import { Painel } from "../../components/Painel";
-import { Task } from "../../components/Task";
+import { TaskComponent } from "../../components/Task";
 import { ListaVazia } from "../../components/ListaVazia";
 
-type Task = {
-    isDone: () => boolean;
-}
-
 export function Home() {
-    const [tasks, setTasks] = useState<Task[]>([]);
+    const [tasks, setTasks] = useState<TaskInterface[]>([]);
+    const [tasksConcluidas, setTasksConcluidas] = useState(0);
 
-    function taferasConcluidas() {
-        return 0;
+    function handleAllTasksDone() {
+        let concluidas = 0;        
+        
+        tasks.map((task) => {
+            if (task.isDone()) {
+                concluidas += 1;
+            }
+        });
+
+        setTasksConcluidas(concluidas);
     }
 
-    function handleTaskAdd(task: Task) {
-        console.log(task);
+    function handleTaskAdd(taskDescription: string) {
+        const task = new Task(taskDescription);
 
         setTasks(prevState => [...prevState, task]);
+        handleAllTasksDone();
     }
 
     function handleTaskRemove(task: number) {
-        console.log(task);
 
-        setTasks(prevState => prevState.filter((taskItem, index) => task !== index))
+        handleAllTasksDone();
+        
+        setTasks(prevState => prevState.filter((taskItem, index) => task !== index));
     }
 
     return (
@@ -43,7 +51,7 @@ export function Home() {
             <View style={styles.bodyContainer}>
                 <Painel
                     criadas={tasks.length}
-                    concluidas={taferasConcluidas()}
+                    concluidas={tasksConcluidas}
                 />
 
                 <FlatList
@@ -56,9 +64,10 @@ export function Home() {
                     keyExtractor={(item, index) => 'key' + index}
 
                     renderItem={({ item, index }) => (
-                        <Task
-                            taskText={item}
+                        <TaskComponent
+                            task={item}
                             onRemove={() => { handleTaskRemove(index) }}
+                            handleTaskDone={() => { handleAllTasksDone() }}
                         />
                     )}
 

@@ -1,18 +1,16 @@
 import { View, Text, Image, TouchableOpacity } from "react-native"
 import { useState } from "react";
+import { TaskInterface } from "../../classes/Task";
 
 import { styles } from "./styles"
 
 type Props = {
-    taskText: string,
+    task: TaskInterface,
     onRemove: () => void;
+    handleTaskDone: () => void;
 }
 
-type Task = {
-    isDone: () => boolean;
-}
-
-export function Task({ taskText, onRemove }: Props) {
+export function TaskComponent( { task, onRemove, handleTaskDone }: Props) {
     const [status, setStatus] = useState(false);
 
     const { text, textChecked } = styles;
@@ -21,11 +19,17 @@ export function Task({ taskText, onRemove }: Props) {
     const imageUnchecked = "./../../../assets/img/check.png";
 
     function taskStatus() {
-        setStatus(!status);
-    }
+        const taskStatus = !status;
 
-    function isDone () {
-        return status;
+        setStatus(taskStatus);        
+        
+        if (taskStatus) {
+            task.done();
+        } else {
+            task.unDone();
+        }
+
+        handleTaskDone();
     }
 
     function getStyleText() {
@@ -45,7 +49,7 @@ export function Task({ taskText, onRemove }: Props) {
             </TouchableOpacity>
 
             <Text style={[getStyleText()]}>
-                {taskText}
+                {task.getDescription()}
             </Text>
 
 

@@ -11,6 +11,15 @@ export function Input({ taskAdd }: Props) {
 
     const [taskInput, setTaskInput] = useState('');
 
+    function handleAdd() {
+
+        if(taskInput.trim()) {
+            taskAdd(taskInput);
+        }
+
+        setTaskInput('')
+    }
+
     return (
         <View style={styles.container}>
             <TextInput
@@ -24,7 +33,7 @@ export function Input({ taskAdd }: Props) {
 
             <TouchableOpacity
                 style={styles.button}
-                onPress={() => { taskAdd(taskInput); setTaskInput('') }}
+                onPress={() => { handleAdd() }}
             >
                 <Image
                     style={styles.imageButton}
