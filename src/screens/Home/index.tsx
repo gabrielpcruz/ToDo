@@ -1,5 +1,5 @@
 import { View, FlatList } from "react-native"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TaskInterface, Task } from "../../classes/Task";
 
 import { styles } from "./styles"
@@ -14,30 +14,30 @@ export function Home() {
     const [tasks, setTasks] = useState<TaskInterface[]>([]);
     const [tasksConcluidas, setTasksConcluidas] = useState(0);
 
-    function handleAllTasksDone() {
-        let concluidas = 0;        
-        
-        tasks.map((task) => {
-            if (task.isDone()) {
-                concluidas += 1;
+    async function handleAllTasksDone() {   
+        setTasksConcluidas(tasks.reduce((acumulator, task, index) => {
+            if(task.isDone()) {
+                return acumulator + 1;
             }
-        });
 
-        setTasksConcluidas(concluidas);
+            return acumulator;
+            }, 0)
+        );
     }
 
+    useEffect(() => {
+        handleAllTasksDone();
+    })
+    
     function handleTaskAdd(taskDescription: string) {
         const task = new Task(taskDescription);
 
         setTasks(prevState => [...prevState, task]);
-        handleAllTasksDone();
     }
 
-    function handleTaskRemove(task: number) {
-
+    function handleTaskRemove(taskId: string)  {        
+        setTasks(prevState => prevState.filter((taskItem, index) => taskId !== taskItem.getId()));
         handleAllTasksDone();
-        
-        setTasks(prevState => prevState.filter((taskItem, index) => task !== index));
     }
 
     return (
@@ -59,15 +59,16 @@ export function Home() {
 
                     showsVerticalScrollIndicator={false}
 
-                    data={tasks}
+                    data={tasks} 
 
-                    keyExtractor={(item, index) => 'key' + index}
+                    keyExtractor={(item, index) => item.getId()}
 
                     renderItem={({ item, index }) => (
                         <TaskComponent
+                            key={item.getId()}
                             task={item}
-                            onRemove={() => { handleTaskRemove(index) }}
-                            handleTaskDone={() => { handleAllTasksDone() }}
+                            onRemove={() => { handleTaskRemove(item.getId()) }}
+                            handleTaskDone={handleAllTasksDone}
                         />
                     )}
 

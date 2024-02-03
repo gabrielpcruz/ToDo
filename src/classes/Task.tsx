@@ -1,19 +1,27 @@
+import uuid from 'react-native-uuid';
 export interface TaskInterface {
+    getId: () => string,
     getDescription: () => string,
     isDone: () => boolean;
-    done: () => void;
+    toggleStatus: () => void;
     unDone: () => void;
 }
 
 export class Task implements TaskInterface {
+    id: string;
     description: string;
     status: boolean;
 
     constructor(description: string) {
+        this.id = uuid.v4().toString();
         this.description = description;
         this.status = false;
     }
     
+    getId(): string {
+        return this.id;
+    }
+
     getDescription(): string {
         return this.description;
     }
@@ -22,8 +30,8 @@ export class Task implements TaskInterface {
         return this.status;
     }
 
-    done() : void {
-        this.status = true;
+    toggleStatus() : void {
+        this.status = (!this.status);
     }
 
     unDone() : void {

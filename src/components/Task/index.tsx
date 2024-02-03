@@ -23,11 +23,7 @@ export function TaskComponent( { task, onRemove, handleTaskDone }: Props) {
 
         setStatus(taskStatus);        
         
-        if (taskStatus) {
-            task.done();
-        } else {
-            task.unDone();
-        }
+        task.toggleStatus();
 
         handleTaskDone();
     }
